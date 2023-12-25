@@ -1,7 +1,7 @@
 import contextlib
 
 from sqlalchemy import create_engine, Engine
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from sqlalchemy.orm import sessionmaker
 
 from src.conf.config import config
 

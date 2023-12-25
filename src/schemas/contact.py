@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel, EmailStr
 
 from datetime import date
@@ -21,3 +23,7 @@ class ContactResponse(ContactBase):
 
     class Config:
         from_attributes = True
+
+
+class ContactsResponse(BaseModel):
+    contacts: List[ContactResponse]
