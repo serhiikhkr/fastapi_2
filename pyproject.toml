@@ -18,7 +18,11 @@ passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 python-multipart = "^0.0.6"
 fastapi-mail = "^1.4.1"
 fastapi-limiter = "^0.1.6"
+pytest = "^7.4.4"
 
+
+[tool.poetry.group.dev.dependencies]
+sphinx = "^7.2.6"
 
 [build-system]
 requires = ["poetry-core"]

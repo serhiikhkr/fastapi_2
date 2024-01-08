@@ -29,22 +29,47 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup():
+    """
+    The startup function is called when the application starts up.
+    It's a good place to initialize things that are needed by your app,
+    such as connecting to databases or initializing caches.
+
+    :return: A fastapilimiter object
+    :doc-author: Trelent
+    """
     r = await redis.Redis(
-        host=config.REDIS_HOST,
-        port=config.REDIS_PORT,
-        db=0,
-        password=None,
-    )
+            host=config.REDIS_HOST,
+            port=config.REDIS_PORT,
+            db=0,
+            password=None,
+        )
     await FastAPILimiter.init(r)
 
 
 @app.get("/")
 def read_root():
+    """
+    The read_root function returns a dictionary with the key &quot;Hello&quot; and value &quot;World&quot;.
+
+
+    :return: A dictionary with a single key and value
+    :doc-author: Trelent
+    """
     return {"Hello": "World"}
 
 
 @app.get("/api/healthchecker")
 def healthchecker(db: Session = Depends(get_db)):
+
+    """
+    The healthchecker function is a simple function that checks the health of the database.
+    It does this by making a request to the database and checking if it returns any results.
+    If there are no results, then we know something is wrong with our connection to the database.
+
+    :param db: Session: Get the database session from the dependency
+    :return: A dict with a message
+    :doc-author: Trelent
+    """
     try:
         # Make request
         result = db.execute(text("SELECT 1")).fetchone()
